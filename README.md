@@ -10,3 +10,15 @@ node.js code that listen to lua socket and trasmit result.
 
 # index.html
 client that listen to node.js result.
+
+
+# required is disabled by default
+
+goto: C:\Program Files\Eagle Dynamics\DCS World OpenBeta\Scripts\MissionScripting.lua
+and comment this lines:
+
+sanitizeModule('os')
+sanitizeModule('io')
+sanitizeModule('lfs')
+require = nil
+loadlib = nil
