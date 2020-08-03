@@ -12,7 +12,7 @@ node.js code that listen to lua socket and trasmit result.
 client that listen to node.js result.
 
 
-# required is disabled by default
+# 'require("")' is disabled by default
 
 goto: C:\Program Files\Eagle Dynamics\DCS World OpenBeta\Scripts\MissionScripting.lua
 and comment this lines:
