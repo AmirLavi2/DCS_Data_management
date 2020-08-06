@@ -1,47 +1,29 @@
+if (process.env.NODE_ENV !== 'production') {
+	require('./modules/env/envConfig');
+}
 
-// udp socket - from DCS LUA
-const dgram = require('dgram');
-const udp4 = dgram.createSocket('udp4');
-const PORT = 9182;
-const HOST = '127.0.0.1';
+const cors = require('cors');
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 
-const DCS_JSON = {};
+const { player_summary } = require('./modules/dbConnections')
 
-udp4.bind(PORT, HOST);
+app.use(cors({
+	origin: 'http://localhost:3000',
+	optionsSuccessStatus: 200}))
 
-udp4.on('listening', ()=>{
-    const address = udp4.address();
-    console.log(`UDP Server listening on ${address.address}:${address.port}`);
-});
+app.route('/statistics')
+	.get((req, res) => {
+		player_summary((mysqlData) => {
+			res.json({ success: true, data: mysqlData });
+		})
+	})
 
-udp4.on('message', (message, remote)=>{
-    
-    if (JSON.parse(message).length > 0){
-        // console.log(JSON.parse(message));
-        DCS_JSON.message = JSON.parse(message);
-        console.log(DCS_JSON.message);
-    }
+//app.route('/registration')
+//	.get((req, res) => {
+//		console.log('reg')
+//		res.json('success')
+//	})
 
-});
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-// websocket server - to web client
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({port: 8082});
-
-wss.on('connection', ws => {
-    console.log('New Client Connected !');
-
-    ws.on('close', () => {
-        console.log('Client has disconnected !');
-    });
-
-    setInterval(()=>{
-        ws.send(JSON.stringify(DCS_JSON.message));
-        DCS_JSON.message = '';
-    }, 2000);
-
-});
+app.listen(port, () => { console.log(`app listening on port ${port}`) });

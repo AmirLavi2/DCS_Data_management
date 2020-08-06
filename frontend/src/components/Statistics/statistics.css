@@ -1,0 +1,14 @@
+section{
+    display:flex;
+    justify-content:center;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: #000000 double;
+}

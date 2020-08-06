@@ -55,7 +55,7 @@ local UDPport = "9182"
 local udp
 local API = {}
 local all = {}
-
+env.info()
 -- socket config
 udp = socket.udp()
 udp:settimeout(0)

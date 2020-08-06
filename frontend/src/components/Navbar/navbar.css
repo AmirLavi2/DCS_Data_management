@@ -1,0 +1,22 @@
+nav {
+    background-color:#0a2ce6;
+    max-height:5vh;
+    margin-top:0;
+    margin-bottom:0;
+}
+ul{
+    list-style:none;
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+    border:#000000 solid;
+}
+
+.inactive {
+    color: #ffe472;
+    text-decoration:none;
+}
+.active {
+    color: #f7d6d6;
+    text-decoration: none;
+}

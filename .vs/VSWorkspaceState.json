@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
+    "\\DCS",
+    "\\DCS\\DCS-scripts",
     "\\frontend",
     "\\frontend\\public",
     "\\frontend\\src",
     "\\frontend\\src\\components",
-    "\\frontend\\src\\components\\App"
+    "\\frontend\\src\\components\\App",
+    "\\frontend\\src\\components\\Layout"
   ],
-  "SelectedNode": "\\frontend\\src\\components\\App\\App.js",
+  "SelectedNode": "\\backend\\server.js",
   "PreviewInSolutionExplorer": false
 }
